@@ -34,13 +34,13 @@ export default function NotFound() {
       </div>
 
       {/* Optional Decorative Image */}
-      <div className="mt-10 opacity-80">
+      {/* <div className="mt-10 opacity-80">
         <img
           src="/couple_transparent.png"
           alt="Couple Illustration"
           className="w-64 mx-auto object-contain"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* 🔹 Navigation Bar */}
       <nav>
         <div
-          className={`transition-all duration-500 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${
+          className={`transition-all duration-500 max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8  ${
             scrolled ? "bg-[#f7efdf]  rounded-2xl px-3 " : "bg-transparent"
           }`}
         >
@@ -73,8 +73,8 @@ export default function Navbar() {
 
             {/* Desktop Menu */}
             <div
-              className={`hidden md:flex space-x-4 font-medium text-[#444] bg-[#f7efdf] overflow-hidden ${
-                scrolled ? "shadow-md rounded-[10px]" : ""
+              className={`hidden md:flex space-x-4 font-medium text-[#444] bg-[#f7efdf] overflow-hidden rounded-[10px] ${
+                scrolled ? "shadow-md " : ""
               }  `}
             >
               {["Home", "About", "Services", "Contact", "Review"].map(

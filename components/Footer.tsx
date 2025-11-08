@@ -1,4 +1,4 @@
-"use client";
+
 import Link from "next/link";
 
 export default function Footer() {
@@ -22,7 +22,7 @@ export default function Footer() {
             Quick Links
           </h3>
           <ul className="space-y-2">
-            {["Home", "About", "Services", "Contact", "Review"].map((item) => (
+            {["Home", "About", "Services", "Pricing", "Contact", "Review"].map((item) => (
               <li key={item}>
                 <Link
                   href={`/${
@@ -47,7 +47,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-[#b69a60] transition-colors">
+              <Link href="/privacy-policy" className="hover:text-[#b69a60] transition-colors">
                 Privacy Policy
               </Link>
             </li>
