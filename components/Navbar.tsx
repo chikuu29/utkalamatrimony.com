@@ -20,7 +20,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="h-25 bg-[#f7efdf]">
+    <div className="h-30 bg-[#f7efdf]">
     <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
       {/* 🔹 Promotional Bar */}
 

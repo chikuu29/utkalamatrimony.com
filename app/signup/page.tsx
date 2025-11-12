@@ -49,6 +49,53 @@ const initialState: FormState = {
   terms_agreement: false,
 };
 
+// Unified registration steps configuration.
+// Change labels, mobileLabel, title or subtitle here to affect stepper and per-step headers.
+type StepConfig = {
+  label: string;
+  mobileLabel: string;
+  title: string;
+  subtitle: string;
+};
+
+const STEPS: StepConfig[] = [
+  {
+    label: "Start",
+    mobileLabel: "Start",
+    title: "Start with contact",
+    subtitle: "Provide a phone number or email so we can save your progress.",
+  },
+  {
+    label: "Basic Info",
+    mobileLabel: "Info",
+    title: "Basic Information",
+    subtitle: "Tell us a little about yourself.",
+  },
+  {
+    label: "Contact",
+    mobileLabel: "Contact",
+    title: "Contact & Password",
+    subtitle: "Add contact details and a secure password.",
+  },
+  {
+    label: "Location",
+    mobileLabel: "Location",
+    title: "Location",
+    subtitle: "Where are you located?",
+  },
+  {
+    label: "Review",
+    mobileLabel: "Review",
+    title: "Review & Submit",
+    subtitle: "Confirm your details before submitting.",
+  },
+];
+
+// Page-level texts (configurable)
+const PAGE_TITLE_PART1 = "Create your";
+const PAGE_TITLE_HIGHLIGHT = "profile";
+const PAGE_SUBTITLE = "Quick, secure and private — start with phone or email.";
+
 function useDraft() {
   const [draft, setDraft] = useState<FormState | null>(null);
 
@@ -153,41 +200,90 @@ export default function SignupPage() {
   };
 
   // Step components
-  const StepIndicator = () => (
-    <div className="flex items-center gap-3 mb-6">
-      {["Start", "Basic Info", "Contact", "Location", "Review"].map(
-        (label, i) => (
+  const StepIndicator = () => {
+  const steps: string[] = STEPS.map((s) => s.label);
+  const mobileLabels: string[] = STEPS.map((s) => s.mobileLabel);
+  const lastIndex = STEPS.length - 1;
+
+    return (
+      <div className="mb-10">
+        <div className="flex items-center justify-between relative px-1 sm:px-2">
+          {/* Connection line background */}
+          <div className="absolute top-6 left-0 right-0 h-1 bg-gray-200 -z-10"></div>
           <div
-            key={label}
-            className={`flex items-center gap-2 ${
-              i <= step ? "text-[#b69a60]" : ""
-            }`}
-          >
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                i <= step
-                  ? "bg-[#b69a60] text-white"
-                  : "bg-gray-200 text-gray-600"
-              }`}
-            >
-              {i + 1}
-            </div>
-            <div className="hidden sm:block text-sm">{label}</div>
-          </div>
-        )
-      )}
-    </div>
-  );
+            className="absolute top-6 left-0 h-1 bg-green-500 -z-10 transition-all duration-500"
+            style={{ width: step === 0 ? "0%" : step === lastIndex ? "100%" : `${(step / lastIndex) * 100}%` }}
+          ></div>
+
+          {steps.map((label: string, i: number) => {
+            const isCompleted = i < step;
+            const isCurrent = i === step;
+            const isUpcoming = i > step;
+
+            return (
+              <div key={label} className="flex flex-col items-center flex-1">
+                {/* Circle (clickable when completed) */}
+                <button
+                  type="button"
+                  onClick={isCompleted ? () => setStep(i) : undefined}
+                  title={isCompleted ? `Go to ${label}` : undefined}
+                  aria-current={isCurrent ? "step" : undefined}
+                  aria-disabled={!isCompleted && !isCurrent}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-bold text-sm sm:text-lg transition-all duration-300 focus:outline-none ${
+                    isCompleted
+                      ? "bg-green-500 text-white shadow-lg scale-110 cursor-pointer hover:scale-105"
+                      : isCurrent
+                      ? "bg-[#b69a60] text-white shadow-lg scale-110"
+                      : "bg-gray-200 text-gray-600"
+                  }`}
+                >
+                  {isCompleted ? (
+                    <svg
+                      className="w-6 h-6 sm:w-7 sm:h-7"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  ) : (
+                    i + 1
+                  )}
+                </button>
+
+                {/* Label - show abbreviated text on mobile, full text on desktop */}
+                <div
+                  className={`mt-2 text-center font-medium transition-colors duration-300 ${
+                    isCompleted
+                      ? "text-green-600"
+                      : isCurrent
+                      ? "text-[#b69a60]"
+                      : "text-gray-500"
+                  }`}
+                >
+                  <div className="hidden sm:block text-xs sm:text-sm">{label}</div>
+                  <div className="sm:hidden text-xs leading-tight max-w-[50px]">{mobileLabels[i]}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-10">
       <div className="text-center">
         <h2 className="text-4xl font-bold text-[#444] mb-4">
-          Create your <span className="text-[#b69a60]">profile</span>
+          {PAGE_TITLE_PART1} <span className="text-[#b69a60]">{PAGE_TITLE_HIGHLIGHT}</span>
         </h2>
-        <p className="text-sm text-gray-600 mb-6">
-          Quick, secure and private — start with phone or email.
-        </p>
+        <p className="text-sm text-gray-600 mb-6">{PAGE_SUBTITLE}</p>
       </div>
       {draft && (
         <div className="mb-4 p-3 bg-yellow-50 border-l-4 border-yellow-300 text-sm">
@@ -199,14 +295,39 @@ export default function SignupPage() {
       <StepIndicator />
 
       <div className="bg-white p-6 rounded-lg shadow">
-        {message && <div className="mb-4 text-sm text-red-600">{message}</div>}
+          {message && (
+            <div
+              className={`mb-4 p-4 rounded-lg border-l-4 flex items-start gap-3 animate-fadeIn ${
+                message.toLowerCase().includes('error') || message.toLowerCase().includes('invalid') || message.toLowerCase().includes('required')
+                  ? 'bg-red-50 border-red-400 text-red-700'
+                  : message.toLowerCase().includes('success') || message.toLowerCase().includes('complete')
+                  ? 'bg-green-50 border-green-400 text-green-700'
+                  : 'bg-blue-50 border-blue-400 text-blue-700'
+              }`}
+            >
+              {message.toLowerCase().includes('error') || message.toLowerCase().includes('invalid') || message.toLowerCase().includes('required') ? (
+                  <svg className="w-5 h-5 shrink-0 text-red-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              ) : message.toLowerCase().includes('success') || message.toLowerCase().includes('complete') ? (
+                  <svg className="w-5 h-5 shrink-0 text-green-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                  <svg className="w-5 h-5 shrink-0 text-blue-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+              )}
+              <div>
+                <p className="font-medium">{message}</p>
+              </div>
+            </div>
+          )}
 
         {step === 0 && (
           <section>
-            <h2 className="text-lg font-medium mb-3">Start with contact</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Provide a phone number or email so we can save your progress.
-            </p>
+            <h2 className="text-lg font-medium mb-3">{STEPS[0].title}</h2>
+            <p className="text-sm text-gray-600 mb-4">{STEPS[0].subtitle}</p>
 
             <label className="block mb-3">
               <span className="text-sm">Mobile Number</span>
@@ -249,7 +370,8 @@ export default function SignupPage() {
 
         {step === 1 && (
           <section>
-            <h2 className="text-lg font-medium mb-3">Basic Information</h2>
+            <h2 className="text-lg font-medium mb-3">{STEPS[1].title}</h2>
+            <p className="text-sm text-gray-600 mb-4">{STEPS[1].subtitle}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label>
                 <span className="text-sm">Looking For</span>
@@ -359,10 +481,8 @@ export default function SignupPage() {
 
         {step === 2 && (
           <section>
-            <h2 className="text-lg font-medium mb-3">Contact & Password</h2>
-            <p className="text-sm text-gray-600 mb-3">
-              We will use this to verify your account.
-            </p>
+            <h2 className="text-lg font-medium mb-3">{STEPS[2].title}</h2>
+            <p className="text-sm text-gray-600 mb-3">{STEPS[2].subtitle}</p>
 
             <label className="block mb-3">
               <span className="text-sm">Mobile Number</span>
@@ -425,7 +545,8 @@ export default function SignupPage() {
 
         {step === 3 && (
           <section>
-            <h2 className="text-lg font-medium mb-3">Location</h2>
+            <h2 className="text-lg font-medium mb-3">{STEPS[3].title}</h2>
+            <p className="text-sm text-gray-600 mb-3">{STEPS[3].subtitle}</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <label>
@@ -497,7 +618,8 @@ export default function SignupPage() {
 
         {step === 4 && (
           <section>
-            <h2 className="text-lg font-medium mb-3">Review & Submit</h2>
+            <h2 className="text-lg font-medium mb-3">{STEPS[4].title}</h2>
+            <p className="text-sm text-gray-600 mb-3">{STEPS[4].subtitle}</p>
 
             <div className="space-y-2 text-sm text-gray-700">
               <div>
