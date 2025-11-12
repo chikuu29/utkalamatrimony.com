@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,9 +8,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand Section */}
         <div>
-          <h2 className="text-2xl font-bold text-[#b69a60] mb-3">
-            Utkal Matrimony
-          </h2>
+          <Link href="/" className="inline-block mb-3">
+            <img
+              src="/utkal_matrimony_logo.png"
+              alt="Utkal Matrimony"
+              className="h-24 w-auto object-contain"
+            />
+          </Link>
           <p className="text-sm leading-relaxed">
             Connecting hearts with trust and tradition. Find your perfect match
             and begin your journey with confidence and happiness.

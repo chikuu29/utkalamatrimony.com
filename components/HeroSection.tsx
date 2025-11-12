@@ -9,7 +9,7 @@ export default function HeroSection() {
         <div className="w-full md:w-1/2 flex justify-center md:justify-start mb-8 md:mb-0">
           <div className=" rounded-[50] shadow-lg">
             <Image
-              src="/couple.png"
+              src="/couple1.png"
               alt="Couple"
               width={500}
               height={500}

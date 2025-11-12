@@ -45,32 +45,13 @@ export default function Navbar() {
         >
           <div className="flex justify-between items-center h-16 transition-all duration-500">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <Link href="/" className="flex items-center space-x-2">
-                {/* Logo Icon */}
-                <div className="bg-[#b69a60] text-white p-2 rounded-full shadow-md">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 21C12 21 4.5 13.875 4.5 8.625C4.5 5.25 7.125 3 10.5 3C11.97 3 13.365 3.765 14.25 4.905C15.135 3.765 16.53 3 18 3C21.375 3 24 5.25 24 8.625C24 13.875 16.5 21 16.5 21H12Z"
-                    />
-                  </svg>
-                </div>
-
-                {/* Logo Text */}
-                <span className="text-2xl font-semibold text-[#444] hover:text-[#b69a60] transition duration-300">
-                  Utkal Matrimony
-                </span>
-              </Link>
-            </div>
+            <Link href="/" className="flex items-center">
+              <img
+                src="/utkal_matrimony_logo.png"
+                alt="Utkal Matrimony"
+                className="hover:shadow-md rounded-2xl h-14 w-auto sm:h-16 md:h-16 object-contain hover:opacity-80 transition-opacity duration-300  mix-blend-multiply"
+              />
+            </Link>
 
             {/* Desktop Menu */}
             <div
