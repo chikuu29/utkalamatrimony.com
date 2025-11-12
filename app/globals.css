@@ -1,29 +1,39 @@
 @import "tailwindcss";
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
- :root {
-  --background: #fef9f0;
-  --foreground: #171717;
-}
-/*
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+
+
+@theme {
+
+  --bg-color: #fef9f0;
+  --text-color: #444444;
+  --accent-color: #b69a60;
+  --color-bg: #fef9f0;
+  /* --color-text: #444444; */
+
+
+
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-color: #0b1220;
+    --text-color: #e6eef8;
+    --accent-color: #d6b86a;
   }
-}
-*/
+} */
 body {
-  background: var(--background);
-  /* color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif; */
-} 
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Utility semantic classes using CSS variables (optional) */
+/* .bg-theme {
+  background-color: var(--bg-color) !important;
+}
+.text-theme {
+  color: var(--text-color) !important;
+}
+.accent {
+  color: var(--accent-color);
+} */

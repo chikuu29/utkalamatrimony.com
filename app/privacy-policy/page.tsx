@@ -9,8 +9,9 @@ export const metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-30 text-gray-700 leading-relaxed">
-      <h1 className="text-3xl font-bold text-[#b69a60] mb-6">Privacy Policy</h1>
-
+      <h2 className="text-4xl font-bold text-[#444] mb-4 text-center">
+        Privacy <span className="text-[#b69a60]">Policy</span>
+      </h2>
       <p className="mb-4">
         At <strong>Utkal Matrimony</strong>, we value your privacy and are
         committed to protecting your personal information. This Privacy Policy
@@ -18,14 +19,18 @@ export default function PrivacyPolicyPage() {
         website and services.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-3">1. Information We Collect</h2>
+      <h2 className="text-2xl font-semibold mt-8 mb-3">
+        1. Information We Collect
+      </h2>
       <p className="mb-4">
         We may collect personal details such as your name, email address, phone
         number, gender, and profile information when you register or interact
         with our services.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-3">2. How We Use Your Information</h2>
+      <h2 className="text-2xl font-semibold mt-8 mb-3">
+        2. How We Use Your Information
+      </h2>
       <p className="mb-4">
         Your data is used to provide matchmaking services, improve our platform,
         communicate with you, and ensure a safe and personalized experience.
@@ -37,7 +42,9 @@ export default function PrivacyPolicyPage() {
         your personal data from unauthorized access, misuse, or disclosure.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-3">4. Sharing of Information</h2>
+      <h2 className="text-2xl font-semibold mt-8 mb-3">
+        4. Sharing of Information
+      </h2>
       <p className="mb-4">
         We do not sell your personal data. Information is only shared with
         trusted partners or as required by law.
@@ -49,7 +56,9 @@ export default function PrivacyPolicyPage() {
         account or contacting our support team.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-3">6. Updates to this Policy</h2>
+      <h2 className="text-2xl font-semibold mt-8 mb-3">
+        6. Updates to this Policy
+      </h2>
       <p className="mb-4">
         We may update this policy periodically. Please review it regularly to
         stay informed about how we protect your information.

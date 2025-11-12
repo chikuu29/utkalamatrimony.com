@@ -20,6 +20,7 @@ export default function Navbar() {
   }, []);
 
   return (
+    <div className="h-25 bg-[#f7efdf]">
     <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
       {/* 🔹 Promotional Bar */}
 
@@ -39,7 +40,7 @@ export default function Navbar() {
       <nav>
         <div
           className={`transition-all duration-500 max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8  ${
-            scrolled ? "bg-[#f7efdf]  rounded-2xl px-3 " : "bg-transparent"
+            scrolled ? "bg-[#f7efdf]  rounded-2xl px-3 " : "bg-[#f7efdf]"
           }`}
         >
           <div className="flex justify-between items-center h-16 transition-all duration-500">
@@ -85,7 +86,7 @@ export default function Navbar() {
                       item.toLowerCase() === "home" ? "" : item.toLowerCase()
                     }`}
                     className="px-4 py-2 rounded-lg transition-all duration-300 
-                    hover:text-[#b69a60] hover:bg-[#f3e8c8] hover:shadow-md"
+                    hover:text-[#b69a60] hover:bg-[#f3e8c8] hover:shadow-md hover:border hover:border-[#b69a60] "
                   >
                     {item}
                   </Link>
@@ -96,12 +97,12 @@ export default function Navbar() {
             {/* Login / Signup */}
             <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
               <div className="flex justify-between border border-[#bea366] rounded-[10px] overflow-hidden text-[#bea366]">
-                <button className="py-1.5 px-6 cursor-pointer hover:bg-[#f8f1e0] transition-colors">
+                <Link href="/login" className="py-1.5 px-6 cursor-pointer hover:bg-[#f8f1e0] transition-colors">
                   Login
-                </button>
-                <button className="py-1.5 px-6 cursor-pointer bg-[#b69a60] text-white hover:bg-[#c7a96d] transition-colors">
+                </Link>
+                <Link href="/signup" className="py-1.5 px-6 cursor-pointer bg-[#b69a60] text-white hover:bg-[#c7a96d] transition-colors">
                   Signup
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -143,10 +144,25 @@ export default function Navbar() {
                   {item}
                 </Link>
               ))}
+
+              {/* <div className="mt-2 border-t border-[#e8dfc9] pt-2">
+                <Link href="/login" className="block text-gray-700 hover:text-[#b69a60]" onClick={() => setIsOpen(false)}>Login</Link>
+                <Link href="/signup" className="block text-gray-700 hover:text-[#b69a60]" onClick={() => setIsOpen(false)}>Signup</Link>
+              </div> */}
+              <div className="flex justify-between border border-[#bea366] rounded-[10px] overflow-hidden text-[#bea366]">
+                 <Link href="/signup" className="py-1.5 px-6 cursor-pointer bg-[#b69a60] text-white hover:bg-[#c7a96d] transition-colors">
+                  Signup
+                </Link>
+                <Link href="/login" className="py-1.5 px-6 cursor-pointer hover:bg-[#f8f1e0] transition-colors">
+                  Login
+                </Link>
+               
+              </div>
             </div>
           </div>
         )}
       </nav>
+    </div>
     </div>
   );
 }

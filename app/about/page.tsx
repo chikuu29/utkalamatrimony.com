@@ -7,8 +7,10 @@ export default function AboutPage() {
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-30 md:py-30">
       <div className="space-y-8 md:space-y-12 text-center md:text-left">
         {/* <h1 className="text-4xl md:text-5xl font-serif"></h1> */}
-        <h1 className="text-7xl font-extrabold text-[#b69a60] mb-4">About Us</h1>
-
+        {/* <h1 className="text-7xl font-extrabold text-[#b69a60] mb-4">About Us</h1> */}
+ <h2 className="text-4xl font-bold text-[#444] mb-4">
+          About <span className="text-[#b69a60]">Us</span>
+        </h2>
         <p className="text-gray-700 max-w-3xl mx-auto md:mx-0 text-lg">
           Utkal Matrimony connects people who are serious about finding a life
           partner. We focus on shared values, clear profiles, and safe

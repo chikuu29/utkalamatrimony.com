@@ -7,7 +7,10 @@ export default function ServicesPage() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-30 md:py-30">
       <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-serif mb-4">Our Services</h1>
+        {/* <h1 className="text-4xl md:text-5xl font-serif mb-4">Our Services</h1> */}
+         <h2 className="text-4xl font-bold text-[#444] mb-4">
+          Our <span className="text-[#b69a60]">Services</span>
+        </h2>
         <p className="text-gray-700 max-w-3xl mx-auto">
           We provide a range of matchmaking services designed to help you meet
           compatible partners with trust, privacy, and guidance.
