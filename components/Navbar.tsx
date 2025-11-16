@@ -59,7 +59,7 @@ export default function Navbar() {
                 scrolled ? "shadow-md " : ""
               }  `}
             >
-              {["Home", "About", "Services", "Contact", "Review"].map(
+              {["Home", "About", "Services", "Contact"].map(
                 (item) => (
                   <Link
                     key={item}

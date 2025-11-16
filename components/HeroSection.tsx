@@ -43,19 +43,23 @@ export default function HeroSection() {
       {/* Search Box */}
       <div className="absolute bottom-[-30] left-1/2 transform -translate-x-1/2 w-[90%] md:w-[70%] bg-[#fefbf3] shadow-lg rounded-[10] px-6 py-4">
         <div className="flex flex-col md:flex-row items-center gap-4">
-          <select className="flex-1 border border-gray-300 rounded-md px-4 py-3 w-full focus:outline-none focus:ring-1 focus:ring-[#b69a60]">
-            <option>I am</option>
-            <option>Male</option>
-            <option>Female</option>
+          <select defaultValue="" className="flex-1 border border-gray-300 rounded-md px-4 py-3 w-full focus:outline-none focus:ring-1 focus:ring-[#b69a60]">
+            <option value="" disabled hidden>
+              I am
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
           </select>
 
-          <select className="flex-1 border border-gray-300 rounded-md px-4 py-3 w-full focus:outline-none focus:ring-1 focus:ring-[#b69a60]">
-            <option>Looking for</option>
-            <option>Male</option>
-            <option>Female</option>
+          <select defaultValue="" className="flex-1 border border-gray-300 rounded-md px-4 py-3 w-full focus:outline-none focus:ring-1 focus:ring-[#b69a60]">
+            <option value="" disabled hidden>
+              Looking for
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
           </select>
 
-          <button className="flex-1 bg-[#b69a60] text-white px-6 py-3 rounded-md hover:bg-[#a18453] transition duration-300 w-full">
+          <button className="flex-1 bg-[#b69a60] text-white px-6 py-3 rounded-md hover:bg-[#a18453] transition duration-300 w-full cursor-pointer">
             Search
           </button>
         </div>

@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-30 md:py-30">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-10">
       <div className="space-y-8 md:space-y-12 text-center md:text-left">
         {/* <h1 className="text-4xl md:text-5xl font-serif"></h1> */}
         {/* <h1 className="text-7xl font-extrabold text-[#b69a60] mb-4">About Us</h1> */}
- <h2 className="text-4xl font-bold text-[#444] mb-4">
+        <h2 className="text-4xl font-bold text-[#444] mb-4 text-center">
           About <span className="text-[#b69a60]">Us</span>
         </h2>
         <p className="text-gray-700 max-w-3xl mx-auto md:mx-0 text-lg">
@@ -27,7 +27,10 @@ export default function AboutPage() {
               process human and respectful.
             </p>
 
-            <Link href="/contact" className="inline-block bg-[#b69a60] text-white px-6 py-2 rounded-md hover:bg-[#c7a96d] transition">
+            <Link
+              href="/contact"
+              className="inline-block bg-[#b69a60] text-white px-6 py-2 rounded-md hover:bg-[#c7a96d] transition"
+            >
               Contact Us
             </Link>
           </section>
@@ -37,7 +40,11 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-center gap-4">
-                <img src="/team/priya.jpg" alt="Priya Sharma" className="w-16 h-16 rounded-full object-cover shadow" />
+                <img
+                  src="/team/priya.jpg"
+                  alt="Priya Sharma"
+                  className="w-16 h-16 rounded-full object-cover shadow"
+                />
                 <div>
                   <div className="font-semibold">Priya Sharma</div>
                   <div className="text-sm text-gray-500">Founder & CEO</div>
@@ -45,7 +52,11 @@ export default function AboutPage() {
               </div>
 
               <div className="flex items-center gap-4">
-                <img src="/team/rohan.jpg" alt="Rohan Patel" className="w-16 h-16 rounded-full object-cover shadow" />
+                <img
+                  src="/team/rohan.jpg"
+                  alt="Rohan Patel"
+                  className="w-16 h-16 rounded-full object-cover shadow"
+                />
                 <div>
                   <div className="font-semibold">Rohan Patel</div>
                   <div className="text-sm text-gray-500">Head of Product</div>

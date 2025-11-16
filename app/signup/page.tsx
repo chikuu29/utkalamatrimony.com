@@ -278,7 +278,7 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10">
+    <main className="max-w-7xl mx-auto px-4 py-10">
       <div className="text-center">
         <h2 className="text-4xl font-bold text-[#444] mb-4">
           {PAGE_TITLE_PART1} <span className="text-[#b69a60]">{PAGE_TITLE_HIGHLIGHT}</span>
